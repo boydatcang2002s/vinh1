@@ -1043,12 +1043,25 @@ footer{background:var(--night);padding:72px 80px 44px;}
     gap:2px;
 }
 @media (max-width:768px){
+
     #tab-nails .price-row.three{
-        display:flex;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:8px;
+        display:grid;
+        grid-template-columns:1fr 65px 65px;
+        gap:12px;
+        align-items:center;
     }
+
+    #tab-nails .price-row.three .price-row-name{
+        font-size:.78rem;
+        line-height:1.4;
+    }
+
+    #tab-nails .price-row.three .price-row-val{
+        text-align:right;
+        margin-left:0;
+        font-size:1rem;
+    }
+
 }
 
 </style>
