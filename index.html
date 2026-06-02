@@ -44,16 +44,30 @@ body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
 
 /* ── LOADER ── */
 #loader{
-  position:fixed;inset:0;z-index:9999;background:#ffffff;
-  display:flex;align-items:center;justify-content:center;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  background:var(--ink);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
   flex-direction:column;
-  transition:clip-path 1.2s cubic-bezier(.77,0,.175,1) .3s;
+
+  transition:
+    clip-path 1.2s cubic-bezier(.77,0,.175,1) .3s,
+    opacity .8s ease;
+
   clip-path:inset(0 0 0 0);
 }
-#loader.out{clip-path:inset(0 0 100% 0);}
+
+#loader.out{
+  clip-path:inset(0 0 100% 0);
+}
 .ld-logo{
   font-family:'Cinzel',serif;font-size:clamp(3rem,8vw,7rem);
-  font-weight:300;letter-spacing:.35em;color:#000000;
+  font-weight:300;letter-spacing:.35em;color:var(--parch);
   overflow:hidden;
 }
 .ld-logo span{display:inline-block;animation:ldChar .8s ease both;}
@@ -62,11 +76,11 @@ body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
 .ld-logo span:nth-child(3){animation-delay:.3s}
 .ld-logo span:nth-child(4){animation-delay:.4s}
 @keyframes ldChar{from{opacity:0;transform:translateY(80%);}to{opacity:1;transform:translateY(0);}}
-.ld-line{width:0;height:1px;background:#000000;margin-top:32px;animation:ldLine 1.8s ease forwards .7s;}
+.ld-line{width:0;height:1px; background:var(--gold);margin-top:32px;animation:ldLine 1.8s ease forwards .7s;}
 @keyframes ldLine{to{width:200px;}}
 .ld-sub{
   font-family:'Raleway',sans-serif;font-weight:200;font-size:.6rem;
-  letter-spacing:.6em;text-transform:uppercase;color:#444444;
+  letter-spacing:.6em;text-transform:uppercase; color:rgba(200,168,106,.65);
   margin-top:16px;opacity:0;animation:ldFade .6s ease forwards 1.4s;
 }
 @keyframes ldFade{to{opacity:1;}}
