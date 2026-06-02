@@ -44,7 +44,7 @@ body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
 
 /* ── LOADER ── */
 #loader{
-  position:fixed;inset:0;z-index:9999;background:var(--ink);
+  position:fixed;inset:0;z-index:9999;background:#ffffff;
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;
   transition:clip-path 1.2s cubic-bezier(.77,0,.175,1) .3s;
@@ -53,7 +53,7 @@ body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
 #loader.out{clip-path:inset(0 0 100% 0);}
 .ld-logo{
   font-family:'Cinzel',serif;font-size:clamp(3rem,8vw,7rem);
-  font-weight:300;letter-spacing:.35em;color:var(--parch);
+  font-weight:300;letter-spacing:.35em;color:#000000;
   overflow:hidden;
 }
 .ld-logo span{display:inline-block;animation:ldChar .8s ease both;}
@@ -62,11 +62,11 @@ body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
 .ld-logo span:nth-child(3){animation-delay:.3s}
 .ld-logo span:nth-child(4){animation-delay:.4s}
 @keyframes ldChar{from{opacity:0;transform:translateY(80%);}to{opacity:1;transform:translateY(0);}}
-.ld-line{width:0;height:1px;background:var(--gold);margin-top:32px;animation:ldLine 1.8s ease forwards .7s;}
+.ld-line{width:0;height:1px;background:#000000;margin-top:32px;animation:ldLine 1.8s ease forwards .7s;}
 @keyframes ldLine{to{width:200px;}}
 .ld-sub{
   font-family:'Raleway',sans-serif;font-weight:200;font-size:.6rem;
-  letter-spacing:.6em;text-transform:uppercase;color:rgba(200,168,106,.5);
+  letter-spacing:.6em;text-transform:uppercase;color:#444444;
   margin-top:16px;opacity:0;animation:ldFade .6s ease forwards 1.4s;
 }
 @keyframes ldFade{to{opacity:1;}}
@@ -85,18 +85,18 @@ nav.stuck{
   padding:18px 64px;
 }
 .nav-brand{text-decoration:none;}
-.nav-brand .n1{
-  font-family:'Playfair Display',serif;font-size:1.55rem;
-  font-weight:400;color:var(--cream);letter-spacing:.18em;transition:color .4s;
+.nav-brand .n1{font-family:'Playfair Display',serif;font-size:1.55rem;
+  font-weight:400;color:#000;letter-spacing:.18em;transition:color .4s;
   display:block;
 }
-nav.stuck .n1{color:var(--night);}
+nav.stuck .n1{color:#000;}
 .nav-brand .n2{
-  font-family:'Tenor Sans',sans-serif;font-size:.5rem;
-  letter-spacing:.45em;text-transform:uppercase;
-  color:rgba(250,245,238,.4);display:block;margin-top:2px;transition:color .4s;
+  font-family:'Tenor Sans',sans-serif;font-size:.55rem;
+  font-weight:700;
+  letter-spacing:.30em;text-transform:uppercase;
+  color:rgba(250,245,238,.75);display:block;margin-top:2px;transition:color .4s;
 }
-nav.stuck .n2{color:var(--bark);}
+nav.stuck .n2{color:var(--night);font-weight:700;}
 .nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
 .nav-links a{
   text-decoration:none;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
@@ -1030,6 +1030,27 @@ footer{background:var(--night);padding:72px 80px 44px;}
   .price-row{padding:12px 14px;}
   .price-row-name{font-size:.74rem;}
 }
+
+.service-group-title{
+    margin:28px 0 12px;
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem;
+    color:var(--bone);
+}
+.price-grid.single{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:2px;
+}
+@media (max-width:768px){
+    #tab-nails .price-row.three{
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1044,7 +1065,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
     <span>M</span><span>I</span><span>Y</span><span>U</span>
   </div>
   <div class="ld-line"></div>
-  <div class="ld-sub">Nails &amp; Flow Spa · Düsseldorf</div>
+  <div class="ld-sub">Headspa · Skincare · Nails · Wimpern</div>
 </div>
 
 <!-- MOBILE MENU -->
@@ -1062,7 +1083,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
 <nav id="nav">
   <a href="#" class="nav-brand">
     <span class="n1">MIYU</span>
-    <span class="n2">Nails &amp; Flow Spa · Düsseldorf</span>
+    <span class="n2">Headspa · Skincare · Nails · Wimpern</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">Über uns</a></li>
@@ -1235,7 +1256,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
           </div>
           <div class="addon-box">
             <span class="addon-title">Optional dazu</span>
-            <div class="addon-row"><span class="addon-name">Shellac Farbe | French</span><span class="addon-price">+10€</span></div>
+            <div class="addon-row"><span class="addon-name">Shellac Farbe | French</span><span class="addon-price">+15€</span></div>
           </div>
         </div>
         <div class="service-block">
@@ -1288,50 +1309,177 @@ footer{background:var(--night);padding:72px 80px 44px;}
     </div>
   </div>
 
-  <div id="tab-wimpern" class="price-panel">
+  
+<div id="tab-wimpern" class="price-panel">
     <div class="price-card">
-      <div class="price-card-head"><div class="price-card-title">Wimpern &amp; Augenbrauen</div><p class="price-card-note">Wimpernverlängerung, Wimpernlifting und Brow Service.</p></div>
-      <div class="price-grid">
-        <div class="price-row"><span class="price-row-name">Wimpernverlängerung Classic (1:1)</span><span class="price-row-val">68€</span></div>
-        <div class="price-row"><span class="price-row-name">Wimpernverlängerung Hybrid</span><span class="price-row-val">78€</span></div>
-        <div class="price-row"><span class="price-row-name">Wimpernverlängerung Volume</span><span class="price-row-val">88€</span></div>
-        <div class="price-row"><span class="price-row-name">Wimpernverlängerung Mega</span><span class="price-row-val">108€</span></div>
+      <div class="price-card-head">
+        <div class="price-card-title">Wimpern &amp; Augenbrauen</div>
+        <p class="price-card-note">Wimpernverlängerung, Wimpernlifting und Brow Service.</p>
+      </div>
+
+      <h4 class="service-group-title">Wimpernverlängerung</h4>
+      <div class="price-grid single">
+        <div class="price-row"><span class="price-row-name">Classic (1:1)</span><span class="price-row-val">68€</span></div>
+        <div class="price-row"><span class="price-row-name">Hybrid</span><span class="price-row-val">78€</span></div>
+        <div class="price-row"><span class="price-row-name">Volume</span><span class="price-row-val">88€</span></div>
+        <div class="price-row"><span class="price-row-name">Mega</span><span class="price-row-val">108€</span></div>
         <div class="price-row"><span class="price-row-name">Refill</span><span class="price-row-val">ab 38€</span></div>
+      </div>
+
+      <h4 class="service-group-title">Wimpernlifting</h4>
+      <div class="price-grid single">
         <div class="price-row featured"><span class="price-row-name">Wimpernlifting</span><span class="price-row-val">45€</span></div>
-        <div class="price-row"><span class="price-row-name">Augenbrauen formen</span><span class="price-row-val">10€</span></div>
-        <div class="price-row"><span class="price-row-name">Augenbrauen formen und färben</span><span class="price-row-val">30€</span></div>
+      </div>
+
+      <h4 class="service-group-title">Augenbrauen</h4>
+      <div class="price-grid single">
+        <div class="price-row"><span class="price-row-name">Formen</span><span class="price-row-val">10€</span></div>
+        <div class="price-row"><span class="price-row-name">Formen und Färben</span><span class="price-row-val">30€</span></div>
       </div>
     </div>
   </div>
 
-  <div id="tab-headspa" class="price-panel">
+
+  
+<div id="tab-headspa" class="price-panel">
     <div class="price-card">
-      <div class="price-card-head"><div class="price-card-title">Headspa</div><p class="price-card-note">Gönnen Sie sich einen Moment der Ruhe, Regeneration und bewussten Selfcare. Optional kann vor jeder Behandlung eine professionelle Kopfhaut-Analyse durchgeführt werden.</p></div>
-      <div class="price-grid">
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">Yū Headspa</span><span class="price-meta">45 Min.</span></div><span class="price-row-desc">Einstiegsritual für Kopfhaut und Sinne: Haarkur mit Dampfbehandlung, Conditioner, Massage für Hals, Nacken und Schultern.</span></div><span class="price-row-val">79€</span></div>
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">Sora Headspa</span><span class="price-meta">60 Min.</span></div><span class="price-row-desc">Tiefenpflege kombiniert mit revitalisierender Gesichtspflege: florales Fußbad, Haarpflege, Massage, Gesichtsreinigung, Gesichtsmassage, Peeling und Gesichtsmaske.</span></div><span class="price-row-val">99€</span></div>
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">Tsuki Headspa</span><span class="price-meta">75 Min.</span></div><span class="price-row-desc">Luxuriöses Full-Body-and-Glow-Ritual mit LED-Lichttherapie, Gesichtspflege und Massage für Füße, Nacken, Schultern, Dekolleté, Arme und Hände.</span></div><span class="price-row-val">119€</span></div>
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">Hikari Headspa</span><span class="price-meta">90 Min.</span></div><span class="price-row-desc">MIYU Signature Ritual für maximale Regeneration mit Haarkur, Gesichtspflege, Jelly-Gesichtsmaske und Kryotherapie mit Ice Globes.</span></div><span class="price-row-val">139€</span></div>
-        <div class="price-row"><span class="price-row-name">Bart-Spa</span><span class="price-row-val">39€</span></div>
-        <div class="price-row"><span class="price-row-name">Kaffeepeeling für das Gesicht</span><span class="price-row-val">15€</span></div>
-        <div class="price-row"><span class="price-row-name">Jelly-Gesichtsmaske</span><span class="price-row-val">25€</span></div>
-        <div class="price-row"><span class="price-row-name">Kryotherapie mit Ice Globes</span><span class="price-row-val">15€</span></div>
-        <div class="price-row"><span class="price-row-name">Handmassage mit Collagen-Handmaske</span><span class="price-row-val">10€</span></div>
+      <div class="price-card-head">
+        <div class="price-card-title">Headspa</div>
+        <p class="price-card-note">Gönnen Sie sich einen Moment der Ruhe, Regeneration und bewussten Selfcare.</p>
       </div>
-      <p class="service-disclaimer" style="margin-top:22px;">Alle Headspa Rituale sind mit sämtlichen MIYU Behandlungen kombinierbar. Es werden 20% vom Gesamtpreis abgezogen.</p>
+
+      <div class="service-stack">
+
+        <div class="service-block featured">
+          <div class="service-block-top">
+            <div>
+              <div class="service-name">Yu Headspa</div>
+              <span class="service-time">45 Min.</span>
+              <span class="service-desc">Einstiegsritual für Kopfhaut und Sinne.</span>
+            </div>
+            <div class="service-price">79€</div>
+          </div>
+          <div class="addon-box">
+            <span class="addon-title">Inklusive</span>
+            <div class="addon-row"><span class="addon-name">Haarkur mit Dampfbehandlung</span></div>
+            <div class="addon-row"><span class="addon-name">Conditioner</span></div>
+            <div class="addon-row"><span class="addon-name">Massage für Hals, Nacken und Schultern</span></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-block-top">
+            <div>
+              <div class="service-name">Sora Headspa</div>
+              <span class="service-time">60 Min.</span>
+              <span class="service-desc">Tiefenpflege kombiniert mit revitalisierender Gesichtspflege.</span>
+            </div>
+            <div class="service-price">99€</div>
+          </div>
+          <div class="addon-box">
+            <span class="addon-title">Inklusive</span>
+            <div class="addon-row"><span class="addon-name">Florales Fußbad vor der Behandlung</span></div>
+            <div class="addon-row"><span class="addon-name">Haarpflege mit Dampfbehandlung</span></div>
+            <div class="addon-row"><span class="addon-name">Conditioner</span></div>
+            <div class="addon-row"><span class="addon-name">Massage für Hals, Nacken, Schultern und Dekolleté</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtsreinigung</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtsmassage</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtspeeling</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtsmaske</span></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-block-top">
+            <div>
+              <div class="service-name">Tsuki Headspa</div>
+              <span class="service-time">75 Min.</span>
+              <span class="service-desc">Erweitertes Glow-Ritual mit zusätzlicher Pflege und Entspannung.</span>
+            </div>
+            <div class="service-price">119€</div>
+          </div>
+          <div class="addon-box">
+          <span class="addon-title">Inklusive</span>
+          <div class="addon-row"><span class="addon-name">Florales Fußbad vor dem Ritual</span></div>
+          <div class="addon-row"><span class="addon-name">Haarkur mit Dampfbehandlung</span></div>
+          <div class="addon-row"><span class="addon-name">Conditioner</span></div>
+          <div class="addon-row"><span class="addon-name">Massage für Hals, Nacken, Schultern, Dekolleté, Arme und Hände</span></div>
+          <div class="addon-row"><span class="addon-name">Gesichtsreinigung</span></div>
+          <div class="addon-row"><span class="addon-name">Gesichtspeeling</span></div>
+          <div class="addon-row"><span class="addon-name">Gesichtsmaske</span></div>
+          <div class="addon-row"><span class="addon-name">LED-Lichttherapie</span></div>
+        </div>
+        </div>
+
+        <div class="service-block featured">
+          <div class="service-block-top">
+            <div>
+              <div class="service-name">Miyu Headspa</div>
+              <span class="service-time">90 Min.</span>
+              <span class="service-desc">MIYU Signature Ritual für maximale Regeneration und Glow.</span>
+            </div>
+            <div class="service-price">139€</div>
+          </div>
+          <div class="addon-box">
+            <span class="addon-title">Inklusive</span>
+            <div class="addon-row"><span class="addon-name">Haarkur mit Dampfbehandlung</span></div>
+            <div class="addon-row"><span class="addon-name">Conditioner</span></div>
+            <div class="addon-row"><span class="addon-name">Massage für Hals, Nacken, Schultern, Dekolleté, Arme und Hände</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtsreinigung</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtspeeling</span></div>
+            <div class="addon-row"><span class="addon-name">Gesichtsmaske</span></div>
+            <div class="addon-row"><span class="addon-name">Kryotherapie mit Ice Globes</span></div>
+          </div>
+        </div>
+
+        <div class="service-block">
+          <div class="service-block-top">
+            <div><div class="service-name">Extras</div></div>
+          </div>
+          <div class="addon-box">
+            <div class="addon-row"><span class="addon-name">Bart-Spa</span><span class="addon-price">39€</span></div>
+            <div class="addon-row"><span class="addon-name">Kaffeepeeling für das Gesicht</span><span class="addon-price">15€</span></div>
+            <div class="addon-row"><span class="addon-name">Jelly-Gesichtsmaske</span><span class="addon-price">25€</span></div>
+            <div class="addon-row"><span class="addon-name">Kryotherapie mit Ice Globes</span><span class="addon-price">15€</span></div>
+            <div class="addon-row"><span class="addon-name">Handmassage mit Collagen-Handmaske</span><span class="addon-price">10€</span></div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <div id="tab-skin" class="price-panel">
+
+  
+<div id="tab-skin" class="price-panel">
     <div class="price-card">
-      <div class="price-card-head"><div class="price-card-title">Skincare</div><p class="price-card-note">Individuelle Pflege für gesunde, strahlende Haut. Alle Rituale enthalten Hauttyp-Analyse, individuell abgestimmte Pflegeprodukte, Double Cleansing und moderne Hydra-Beauty-Technologie.</p></div>
-      <div class="price-grid">
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">MIYU Glow</span><span class="price-meta">40 Min.</span></div><span class="price-row-desc">Sanftes Glow-Ritual mit Vapozon, Gua-Sha-Massage und Gesichtsmaske.</span></div><span class="price-row-val">49€</span></div>
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">MIYU Detox</span><span class="price-meta">70 Min.</span></div><span class="price-row-desc">Tiefenreinigung und Regeneration mit Hydra-Tiefenreinigung, Gua-Sha-Massage, Jelly-Gesichtsmaske, Kryotherapie mit Ice Globes und Massage für Hals, Nacken und Schultern.</span></div><span class="price-row-val">79€</span></div>
-        <div class="price-row featured"><div><div class="price-row-main"><span class="price-row-name">MIYU Balance</span><span class="price-meta">90 Min.</span></div><span class="price-row-desc">Luxuriöses Skincare-Ritual für intensive Pflege und maximale Ausstrahlung: Hydra-Tiefenreinigung, Microneedling, Gua-Sha-Massage, Jelly-Gesichtsmaske und Kryotherapie.</span></div><span class="price-row-val">109€</span></div>
+      <div class="price-card-head">
+        <div class="price-card-title">Skincare</div>
+        <p class="price-card-note">Individuelle Pflege für gesunde, strahlende Haut.</p>
+      </div>
+      <div class="service-stack">
+        <div class="service-block featured">
+          <div class="service-block-top">
+            <div><div class="service-name">MIYU Glow</div><span class="service-time">40 Min.</span><span class="service-desc">Sanftes Glow-Ritual mit Vapozon, Gua-Sha-Massage und Gesichtsmaske.</span></div>
+            <div class="service-price">49€</div>
+          </div>
+        </div>
+        <div class="service-block">
+          <div class="service-block-top">
+            <div><div class="service-name">MIYU Detox</div><span class="service-time">70 Min.</span><span class="service-desc">Tiefenreinigung und Regeneration mit Hydra-Tiefenreinigung, Jelly-Maske und Kryotherapie.</span></div>
+            <div class="service-price">79€</div>
+          </div>
+        </div>
+        <div class="service-block featured">
+          <div class="service-block-top">
+            <div><div class="service-name">MIYU Balance</div><span class="service-time">90 Min.</span><span class="service-desc">Luxuriöses Skincare-Ritual mit Microneedling, Jelly-Maske und Kryotherapie.</span></div>
+            <div class="service-price">109€</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
   <a class="service-insta" href="https://instagram.com/miyu.spa" target="_blank">Instagram · @miyu.spa</a>
   <p class="service-disclaimer">Preise nach Vorlage der aktuellen MIYU Preisliste. Kleine Abweichungen/Anpassungen je nach Zustand und Aufwand möglich.</p>
 </section>
@@ -1456,7 +1604,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
   <div class="footer-top">
     <div>
       <div class="f-brand">MIYU</div>
-      <span class="f-brand-sub">Nails &amp; Flow Spa · Düsseldorf</span>
+      <span class="f-brand-sub">Headspa · Skincare · Nails · Wimpern</span>
       <p class="f-tagline">Ein Ort für Frauen, die Schönheit als tägliches Ritual begreifen.</p>
     </div>
     <div>
