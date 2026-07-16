@@ -1,1 +1,352 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum — MIYU Flow Spa · Düsseldorf</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,300;1,400&family=Tenor+Sans&family=EB+Garamond:ital,wght@0,300;0,400;1,300&family=Cinzel:wght@300;400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sand:#f0e6d3;
+  --ink:#0e0a07;
+  --parch:#f7f0e6;
+  --bone:#ede0cc;
+  --dust:#d9c8b0;
+  --gold:#c4a46b;
+  --rose:#c9a090;
+  --bark:#8b6b52;
+  --earth:#5c3d28;
+  --night:#1a120a;
+  --cream:#faf5ee;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--cream);
+  color:var(--night);
+  font-family:'Tenor Sans',sans-serif;
+  overflow-x:hidden;
+}
+body.menu-open{overflow:hidden;height:100dvh;touch-action:none;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:500;
+  padding:18px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(250,245,238,.95);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(196,164,107,.2);
+}
+.nav-brand{text-decoration:none;}
+.nav-brand .n1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:400;color:#000;letter-spacing:.18em;display:block;}
+.nav-brand .n2{font-family:'Tenor Sans',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--night);display:block;margin-top:2px;}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+.nav-links a{text-decoration:none;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bark);transition:color .3s;position:relative;padding-bottom:3px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--gold)!important;}
+.nav-links a:hover::after{width:100%;}
+.nav-book{
+  border:1px solid rgba(200,168,106,.35);
+  color:var(--gold)!important;
+  padding:10px 26px;letter-spacing:.28em!important;
+  text-transform:uppercase;text-decoration:none;
+  transition:background .3s,color .3s;
+}
+.nav-book:hover{background:var(--gold);color:var(--night)!important;transform:translateY(-1px);}
+.nav-book::after{display:none!important;}
+
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;flex-shrink:0;}
+.hamburger span{width:24px;height:1px;background:var(--night);transition:.3s;display:block;}
+
+#mob-menu{
+  display:none;position:fixed;inset:0;z-index:900;
+  background:rgba(26,18,10,.98);
+  flex-direction:column;align-items:center;justify-content:flex-start;gap:32px;
+  padding:calc(env(safe-area-inset-top,0px) + 110px) 24px calc(env(safe-area-inset-bottom,0px) + 32px);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+#mob-menu.open{display:flex;}
+#mob-menu a{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bone);text-decoration:none;transition:color .3s;text-align:center;}
+#mob-menu a:hover{color:var(--gold);}
+.mob-brand{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);left:18px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--cream);letter-spacing:.12em;text-decoration:none;}
+#mob-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);right:14px;background:none;border:none;color:var(--bone);font-size:1.6rem;line-height:1;cursor:pointer;padding:8px;z-index:2;}
+
+/* ── PAGE HEADER ── */
+.pg-header{
+  padding:180px 80px 80px;
+  background:var(--night);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.pg-header::before{
+  content:'MIYU';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;font-size:16rem;font-weight:400;
+  color:rgba(255,255,255,.02);line-height:1;pointer-events:none;user-select:none;white-space:nowrap;
+}
+.pg-eyebrow{font-size:.58rem;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;position:relative;}
+.pg-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:400;color:var(--bone);position:relative;}
+
+/* ── CONTENT ── */
+.legal-wrap{
+  padding:100px 80px 130px;
+  background:var(--cream);
+  display:flex;justify-content:center;
+}
+.legal-card{
+  max-width:760px;width:100%;
+  background:var(--sand);
+  border:1px solid var(--dust);
+  border-radius:20px;
+  padding:64px 72px;
+}
+.legal-block{margin-bottom:44px;}
+.legal-block:last-child{margin-bottom:0;}
+.legal-h{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:400;
+  color:var(--night);
+  margin-bottom:16px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--dust);
+}
+.legal-h em{font-style:italic;color:var(--bark);}
+.legal-p{
+  font-size:.87rem;line-height:1.95;color:var(--bark);
+}
+.legal-p a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(196,164,107,.35);transition:color .3s,border-color .3s;}
+.legal-p a:hover{color:var(--earth);border-color:var(--earth);}
+.legal-eye{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+
+/* ── FOOTER ── */
+footer{background:var(--night);padding:72px 80px 44px;}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;
+  gap:80px;padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:36px;
+}
+.f-brand{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bone);letter-spacing:.15em;margin-bottom:10px;}
+.f-brand-sub{font-size:.55rem;letter-spacing:.45em;text-transform:uppercase;color:var(--bark);margin-bottom:20px;display:block;}
+.f-tagline{font-size:.8rem;color:rgba(240,230,211,.3);line-height:1.8;max-width:260px;}
+.f-col-title{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
+.f-links{display:flex;flex-direction:column;gap:12px;}
+.f-links a{text-decoration:none;font-size:.82rem;color:rgba(240,230,211,.35);transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.f-copy{font-size:.62rem;color:rgba(240,230,211,.2);letter-spacing:.1em;}
+.f-social{display:flex;gap:16px;}
+.f-social a{
+  width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(240,230,211,.3);transition:all .3s;text-decoration:none;
+}
+.f-social a:hover{border-color:var(--gold);color:var(--gold);background:rgba(196,164,107,.08);}
+
+/* ── RESPONSIVE ── */
+@media (max-width:1024px){
+  nav{padding:16px 32px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .pg-header{padding:150px 40px 64px;}
+  .legal-wrap{padding:72px 40px 100px;}
+  .legal-card{padding:48px 40px;}
+  footer{padding:60px 40px 40px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:48px;}
+}
+@media (max-width:768px){
+  nav{padding:calc(env(safe-area-inset-top,0px) + 16px) 24px 16px;}
+  .nav-brand .n1{font-size:1.3rem;letter-spacing:.14em;}
+  .nav-brand .n2{font-size:.45rem;letter-spacing:.28em;}
+  .pg-header{padding:130px 24px 52px;}
+  .pg-title{font-size:clamp(2rem,7vw,3rem);}
+  .legal-wrap{padding:60px 20px 80px;}
+  .legal-card{padding:36px 24px;border-radius:16px;}
+  .legal-h{font-size:1.1rem;}
+  .legal-p{font-size:.83rem;}
+  footer{padding:52px 24px 36px;}
+  .footer-top{grid-template-columns:1fr;gap:40px;padding-bottom:36px;margin-bottom:28px;}
+  .f-brand{font-size:1.8rem;}
+  .f-tagline{max-width:none;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:20px;}
+}
+@media (max-width:480px){
+  nav{padding:calc(env(safe-area-inset-top,0px) + 14px) 18px 14px;}
+  .nav-brand .n1{font-size:1.15rem;letter-spacing:.12em;}
+  .nav-brand .n2{display:none;}
+  .pg-header{padding:118px 18px 44px;}
+  .legal-wrap{padding:48px 14px 64px;}
+  .legal-card{padding:28px 18px;}
+  footer{padding:44px 18px 28px;}
+  .footer-top{gap:32px;}
+  .f-brand{font-size:1.5rem;}
+  .f-brand-sub,.f-col-title{font-size:.48rem;letter-spacing:.25em;}
+  .f-links a,.f-tagline{font-size:.78rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu" aria-hidden="true">
+  <a href="index.html" class="mob-brand" onclick="closeMob()">MIYU</a>
+  <button id="mob-close" type="button" aria-label="Menü schließen" onclick="closeMob()">✕</button>
+  <a href="index.html#about" onclick="closeMob()">Über uns</a>
+  <a href="index.html#services" onclick="closeMob()">Preisliste</a>
+  <a href="index.html#instagram" onclick="closeMob()">Galerie</a>
+  <a href="index.html#contact" onclick="closeMob()">Kontakt</a>
+  <a href="https://www.treatwell.de/ort/miyu/" onclick="closeMob()" style="background:var(--gold);color:var(--night);padding:14px 44px;border-radius:100px;font-family:'Tenor Sans',sans-serif;font-size:.65rem;letter-spacing:.3em;margin-top:8px;">Termin buchen</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <span class="n1">MIYU</span>
+    <span class="n2">Flow Spa · Düsseldorf</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Über uns</a></li>
+    <li><a href="index.html#services">Preisliste</a></li>
+    <li><a href="index.html#instagram">Galerie</a></li>
+    <li><a href="index.html#contact">Kontakt</a></li>
+    <li><a href="https://www.treatwell.de/ort/miyu/" class="nav-book">Termin buchen</a></li>
+  </ul>
+  <div class="hamburger" role="button" aria-label="Menü öffnen" aria-controls="mob-menu" aria-expanded="false" tabindex="0" onclick="openMob()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMob();}">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="pg-header">
+  <p class="pg-eyebrow">Rechtliches</p>
+  <h1 class="pg-title">Impressum</h1>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-wrap">
+  <div class="legal-card">
+
+    <div class="legal-block">
+      <h2 class="legal-h">Angaben gemäß <em>§ 5 TMG</em></h2>
+      <p class="legal-p">
+        Beauty World Arcaden<br>
+        Friedrichstraße 133<br>
+        40217 Düsseldorf
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">Vertreten durch</h2>
+      <p class="legal-p">Bao Yen Hoang</p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">Kontakt</h2>
+      <p class="legal-p">
+        Telefon: 0211 994 432 25<br>
+        E-Mail: <a href="mailto:info@beautyworlds.de">info@beautyworlds.de</a>
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">Umsatzsteuer-ID</h2>
+      <p class="legal-p">
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+        106/5141/3210
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">Website</h2>
+      <p class="legal-p">
+        MN Webdesign<br>
+        Marvin Nowozin<br>
+        <a href="https://marvinnowozin.de/" target="_blank" rel="noopener">marvinnowozin.de</a>
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">EU-Streitschlichtung</h2>
+      <p class="legal-p">
+        Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.<br>
+        Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2 class="legal-h">Verbraucher­streit­beilegung / Universal­schlichtungs­stelle</h2>
+      <p class="legal-p">
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="f-brand">MIYU</div>
+      <span class="f-brand-sub">Flow Spa · Düsseldorf</span>
+      <p class="f-tagline">Ein Ort für Frauen, die Schönheit als tägliches Ritual begreifen.</p>
+    </div>
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <div class="f-links">
+        <a href="index.html#about">Über uns</a>
+        <a href="index.html#services">Preisliste</a>
+        <a href="index.html#instagram">Galerie</a>
+        <a href="index.html#contact">Kontakt</a>
+        <a href="https://www.treatwell.de/ort/miyu/">Termin buchen</a>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Kontakt</div>
+      <div class="f-links">
+        <a href="#">Friedrichstraße 133, Düsseldorf</a>
+        <a href="#">Düsseldorf Arcaden · 1. Untergeschoss</a>
+        <a href="tel:+49 162 9321886">+49 162 9321886</a>
+        <a href="https://www.miyuflowspa.de" target="_blank">www.miyuflowspa.de</a>
+        <a href="#">Mo–Sa: 10–20 Uhr</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-copy">© 2026 MIYU Flow Spa · Alle Rechte vorbehalten</span>
+    <div class="f-social">
+      <a href="https://instagram.com/miyu.spa" target="_blank" title="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" title="WhatsApp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const mobMenu=document.getElementById('mob-menu');
+const hamburger=document.querySelector('.hamburger');
+function openMob(){
+  mobMenu.classList.add('open');
+  mobMenu.setAttribute('aria-hidden','false');
+  document.body.classList.add('menu-open');
+  hamburger.setAttribute('aria-expanded','true');
+}
+function closeMob(){
+  mobMenu.classList.remove('open');
+  mobMenu.setAttribute('aria-hidden','true');
+  document.body.classList.remove('menu-open');
+  hamburger.setAttribute('aria-expanded','false');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape' && mobMenu.classList.contains('open')) closeMob();
+});
+</script>
+</body>
+</html>
