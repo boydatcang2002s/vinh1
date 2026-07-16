@@ -1,1 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz · BW Beauty World</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,300;1,400&family=Tenor+Sans&family=EB+Garamond:ital,wght@0,300;0,400;1,300&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f1e8;
+  --text:#1d160f;
+  --soft:#f0e3d5;
+  --accent:#b58c57;
+  --gold:#c4a46b;
+  --bark:#8b6b52;
+  --muted:#7a6b5d;
+  --panel:#fff8f1;
+  --line:rgba(181,140,87,.18);
+  --night:#1a120a;
+  --bone:#ede0cc;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Tenor Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.page-shell{min-height:100vh;display:flex;flex-direction:column;}
+nav{position:fixed;top:0;width:100%;z-index:500;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;background:rgba(247,241,232,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+nav.stuck{padding:18px 36px;}
+.nav-brand{text-decoration:none;display:flex;flex-direction:column;}
+.nav-brand .n1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:400;color:var(--text);letter-spacing:.18em;display:block;}
+.nav-brand .n2{font-family:'Tenor Sans',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:rgba(29,22,15,.7);display:block;margin-top:2px;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(29,22,15,.75);position:relative;padding-bottom:4px;transition:color .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .3s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after{width:100%;}
+.hero{position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('images/gallery-2.jpg') center/cover no-repeat;filter:brightness(.62) contrast(1.05);}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,7,.55) 0%,rgba(14,10,7,.18) 45%,rgba(247,241,232,.7) 100%);}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:120px 28px 100px;color:var(--bg);display:grid;gap:18px;}
+.hero-eyebrow{font-size:.65rem;text-transform:uppercase;letter-spacing:.35em;color:rgba(240,230,211,.8);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,5.8rem);line-height:.9;letter-spacing:.05em;}
+.hero-sub{max-width:640px;font-size:1rem;color:rgba(240,230,211,.8);margin-top:18px;}
+.main{flex:1;max-width:1200px;margin:0 auto;padding:100px 28px 80px;display:grid;grid-template-columns:1fr;gap:0;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 20px 70px rgba(18,12,7,.04);padding:36px;}
+.section-title{font-family:'Playfair Display',serif;font-size:2.3rem;line-height:1.05;margin-bottom:18px;color:var(--text);}
+.section-note{font-size:.92rem;color:var(--muted);margin-bottom:28px;}
+.block{margin-bottom:42px;}
+.block h3{font-family:'Playfair Display',serif;font-size:1.38rem;margin-bottom:14px;color:var(--text);}
+.block h4{font-size:1rem;margin-bottom:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;}
+.block p{margin-bottom:18px;font-size:.95rem;color:var(--muted);}
+.block ul{margin-top:10px;padding-left:20px;color:var(--muted);}
+.block li{margin-bottom:10px;}
+.separator{height:1px;background:var(--line);margin:44px 0;}
+.aside-box{display:grid;gap:20px;}
+.aside-panel{background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:18px;padding:24px;}
+.aside-panel h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.28em;color:var(--accent);margin-bottom:16px;}
+.aside-panel p, .aside-panel a{font-size:.95rem;color:var(--muted);line-height:1.7;}
+.aside-panel a{display:block;margin-top:10px;color:var(--text);}
+footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
+.footer-top{max-width:1200px;margin:0 auto 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:80px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.05);}
+.f-brand{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bone);letter-spacing:.15em;margin-bottom:10px;}
+.f-brand-sub{font-size:.55rem;letter-spacing:.45em;text-transform:uppercase;color:var(--bark);margin-bottom:20px;display:block;}
+.f-tagline{font-size:.8rem;color:rgba(240,230,211,.3);line-height:1.8;max-width:260px;}
+.f-col-title{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
+.f-links{display:flex;flex-direction:column;gap:12px;}
+.f-links a{text-decoration:none;font-size:.82rem;color:rgba(240,230,211,.35);transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.f-copy{font-size:.62rem;color:rgba(240,230,211,.2);letter-spacing:.1em;}
+.f-social{display:flex;gap:16px;}
+.f-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);transition:all .3s;text-decoration:none;}
+.f-social a:hover{border-color:var(--accent);color:var(--accent);background:rgba(181,140,87,.08);}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;flex-shrink:0;}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:.3s;}
+#mob-menu{display:none;position:fixed;inset:0;z-index:600;background:rgba(26,18,10,.98);flex-direction:column;align-items:center;justify-content:flex-start;gap:32px;padding:calc(env(safe-area-inset-top,0px)+110px) 24px calc(env(safe-area-inset-bottom,0px)+32px);overflow-y:auto;}
+#mob-menu.open{display:flex;}
+#mob-menu a{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bg);text-decoration:none;transition:color .3s;text-align:center;}
+#mob-menu a:hover{color:var(--accent);}
+.mob-brand{position:absolute;top:calc(env(safe-area-inset-top,0px)+14px);left:18px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--bg);letter-spacing:.12em;text-decoration:none;}
+#mob-close{position:absolute;top:calc(env(safe-area-inset-top,0px)+10px);right:14px;background:none;border:none;color:var(--bg);font-size:1.6rem;line-height:1;cursor:pointer;padding:8px;z-index:2;}
+@media(max-width:1024px){.nav-links{display:none;}.hamburger{display:flex;}.main{grid-template-columns:1fr;}.hero{min-height:720px;}.footer-top{grid-template-columns:1fr 1fr;gap:48px;}} 
+@media(max-width:680px){.nav-links{display:none;}.hamburger{display:flex;}.navbar{flex-direction:row;align-items:center;}.hero-content{padding:90px 20px 70px;}.main{padding:40px 20px 60px;}.card{padding:28px;}.hero-title{font-size:clamp(2.4rem,10vw,4.4rem);}.footer-top{grid-template-columns:1fr;gap:40px;padding-bottom:36px;margin-bottom:28px;}.footer-bottom{flex-direction:column;align-items:flex-start;}.}
+</style>
+</head>
+<body>
+<div class="page-shell">
+<nav id="nav">
+  <a href="index.html" class="nav-brand">
+    <span class="n1">MIYU</span>
+    <span class="n2">Flow Spa · Düsseldorf</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Über uns</a></li>
+    <li><a href="index.html#services">Preisliste</a></li>
+    <li><a href="index.html#instagram">Galerie</a></li>
+    <li><a href="index.html#contact">Kontakt</a></li>
+  </ul>
+  <div class="hamburger" role="button" aria-label="Menü öffnen" tabindex="0" onclick="openMob()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+<div id="mob-menu" aria-hidden="true">
+  <a href="#" class="mob-brand" onclick="closeMob()">MIYU</a>
+  <button id="mob-close" type="button" aria-label="Menü schließen" onclick="closeMob()">✕</button>
+  <a href="index.html#about" onclick="closeMob()">Über uns</a>
+  <a href="index.html#services" onclick="closeMob()">Preisliste</a>
+  <a href="index.html#instagram" onclick="closeMob()">Galerie</a>
+  <a href="index.html#contact" onclick="closeMob()">Kontakt</a>
+</div>
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Transparenz & Vertraulichkeit</span>
+    <h1 class="hero-title">Datenschutz<br><em>für Ihre Sicherheit</em></h1>
+    <p class="hero-sub">Lesen Sie, wie wir Ihre personenbezogenen Daten schützen und welche Rechte Ihnen nach der DSGVO zustehen.</p>
+  </div>
+</section>
+<main class="main">
+  <article class="card">
+    <div class="section-title">Datenschutz</div>
+    <p class="section-note">Im Folgenden finden Sie den vollständigen Überblick zur Verarbeitung Ihrer Daten auf unserer Website.</p>
+
+    <div class="block">
+      <h3>1. Datenschutz auf einen Blick</h3>
+      <h4>Allgemeine Hinweise</h4>
+      <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+    </div>
+
+    <div class="block">
+      <h4>Datenerfassung auf dieser Website</h4>
+      <h3>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h3>
+      <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.</p>
+
+      <h3>Wie erfassen wir Ihre Daten?</h3>
+      <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+      <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+
+      <h3>Wofür nutzen wir Ihre Daten?</h3>
+      <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+
+      <h3>Welche Rechte haben Sie bezüglich Ihrer Daten?</h3>
+      <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen.</p>
+      <p>Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+      <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="block">
+      <h3>2. Hosting</h3>
+      <h4>IONOS</h4>
+      <p>Wir hosten unsere Website bei IONOS SE. Anbieter ist die IONOS SE, Elgendorfer Str. 57, 56410 Montabaur (nachfolgend IONOS). Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adressen. Details entnehmen Sie der Datenschutzerklärung von IONOS: <a href="https://www.ionos.de/terms-gtc/terms-privacy" target="_blank" rel="noreferrer">https://www.ionos.de/terms-gtc/terms-privacy</a>.</p>
+      <p>Die Verwendung von IONOS erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
+
+      <h4>Auftragsverarbeitung</h4>
+      <p>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) mit dem oben genannten Anbieter geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="block">
+      <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
+      <h4>Datenschutz</h4>
+      <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+      <p>Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
+      <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+    </div>
+
+    <div class="block">
+      <h4>Hinweis zur verantwortlichen Stelle</h4>
+      <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+      <p><strong>BW Beauty World GmbH<br> Nhat Anh Vu<br> Thessaloniki-Allee 7<br> 51103 Köln</strong></p>
+      <p>Telefon: +49 162 9321886<br>E-Mail: <a href="mailto:info@beautyworlds.de">info@beautyworlds.de</a></p>
+      <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
+    </div>
+
+    <div class="block">
+      <h4>Speicherdauer</h4>
+      <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben.</p>
+      <p>In diesen Fällen erfolgt die Löschung nach Fortfall dieser Gründe.</p>
+    </div>
+
+    <div class="block">
+      <h4>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website</h4>
+      <p>Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9 Abs. 2 lit. a DSGVO, sofern besondere Datenkategorien verarbeitet werden. Im Falle einer ausdrücklichen Einwilligung in die Übertragung personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1 lit. a DSGVO.</p>
+      <p>Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TTDSG. Die Einwilligung ist jederzeit widerrufbar.</p>
+      <p>Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Ferner verarbeiten wir Daten zur Erfüllung einer rechtlichen Verpflichtung auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO.</p>
+      <p>Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen.</p>
+    </div>
+
+    <div class="block">
+      <h4>Hinweis zur Datenweitergabe in die USA und sonstige Drittstaaten</h4>
+      <p>Wir verwenden unter anderem Tools von Unternehmen mit Sitz in den USA oder sonstigen datenschutzrechtlich nicht sicheren Drittstaaten. Wenn diese Tools aktiv sind, können Ihre personenbezogenen Daten in diese Drittstaaten übertragen und dort verarbeitet werden.</p>
+      <p>Wir weisen darauf hin, dass in diesen Ländern kein mit der EU vergleichbares Datenschutzniveau garantiert werden kann. Beispielsweise sind US-Unternehmen dazu verpflichtet, personenbezogene Daten an Sicherheitsbehörden herauszugeben, ohne dass Sie als Betroffener hiergegen gerichtlich vorgehen könnten.</p>
+      <p>Wir haben auf diese Verarbeitungstätigkeiten keinen Einfluss.</p>
+    </div>
+
+    <div class="block">
+      <h4>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h4>
+      <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="block">
+      <h3>4. Datenerfassung auf dieser Website</h3>
+      <h4>Cookies</h4>
+      <p>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert.</p>
+      <p>Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt.</p>
+      <p>Teilweise können auch Cookies von Drittunternehmen auf Ihrem Endgerät gespeichert werden. Diese ermöglichen uns oder Ihnen die Nutzung bestimmter Dienstleistungen des Drittunternehmens.</p>
+      <p>Cookies haben verschiedene Funktionen. Viele Cookies sind technisch notwendig, da bestimmte Websitefunktionen ohne diese nicht funktionieren würden. Andere Cookies dienen dazu, das Nutzerverhalten auszuwerten oder Werbung anzuzeigen.</p>
+      <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter Funktionen oder zur Optimierung der Website erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG.</p>
+    </div>
+
+    <div class="block">
+      <h4>Einwilligung mit Borlabs Cookie</h4>
+      <p>Unsere Website nutzt die Consent-Technologie von Borlabs Cookie, um Ihre Einwilligung zur Speicherung bestimmter Cookies in Ihrem Browser oder zum Einsatz bestimmter Technologien einzuholen und datenschutzkonform zu dokumentieren.</p>
+      <p>Anbieter ist die Borlabs GmbH, Rübenkamp 32, 22305 Hamburg. Wenn Sie unsere Website betreten, wird ein Borlabs-Cookie in Ihrem Browser gespeichert, in dem die von Ihnen erteilten Einwilligungen oder der Widerruf dieser Einwilligungen gespeichert werden.</p>
+      <p>Die erfassten Daten werden gespeichert, bis Sie uns zur Löschung auffordern bzw. das Borlabs-Cookie selbst löschen oder der Zweck entfällt. Details zur Datenverarbeitung finden Sie unter <a href="https://de.borlabs.io/kb/welche-daten-speichert-borlabs-cookie/" target="_blank" rel="noreferrer">https://de.borlabs.io/kb/welche-daten-speichert-borlabs-cookie/</a>.</p>
+      <p>Der Einsatz der Borlabs-Cookie-Consent-Technologie erfolgt, um die gesetzlich vorgeschriebenen Einwilligungen einzuholen. Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. c DSGVO.</p>
+    </div>
+
+    <div class="block">
+      <h4>Kontaktformular</h4>
+      <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+      <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO); die Einwilligung ist jederzeit widerrufbar.</p>
+      <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung widerrufen oder der Zweck entfällt. Zwingende gesetzliche Aufbewahrungsfristen bleiben unberührt.</p>
+    </div>
+
+    <div class="block">
+      <h4>Anfrage per E-Mail, Telefon oder Telefax</h4>
+      <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+      <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO); die Einwilligung ist jederzeit widerrufbar.</p>
+      <p>Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung widerrufen oder der Zweck entfällt. Zwingende gesetzliche Bestimmungen bleiben unberührt.</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="block">
+      <h3>5. Plugins und Tools</h3>
+      <h4>Google Web Fonts (lokales Hosting)</h4>
+      <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet dabei nicht statt.</p>
+      <p>Weitere Informationen zu Google Web Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noreferrer">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
+    </div>
+
+    <div class="block">
+      <h4>Google Maps</h4>
+      <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.</p>
+      <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung.</p>
+      <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO.</p>
+      <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/</a> und <a href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/" target="_blank" rel="noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/sccs/</a>.</p>
+      <p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
+    </div>
+  </article>
+</main>
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="f-brand">MIYU</div>
+      <span class="f-brand-sub">Flow Spa · Düsseldorf</span>
+      <p class="f-tagline">Ein Ort für Frauen, die Schönheit als tägliches Ritual begreifen.</p>
+    </div>
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <div class="f-links">
+        <a href="index.html">Startseite</a>
+        <a href="index.html#about">Über uns</a>
+        <a href="index.html#services">Preisliste</a>
+        <a href="index.html#instagram">Galerie</a>
+        <a href="index.html#contact">Kontakt</a>
+      </div>
+    </div>
+    <div>
+      <div class="f-col-title">Kontakt</div>
+      <div class="f-links">
+        <a href="#">Friedrichstraße 133, Düsseldorf</a>
+        <a href="#">Düsseldorf Arcaden · 1. Untergeschoss</a>
+        <a href="tel:+491629321886">+49 162 9321886</a>
+        <a href="https://www.miyuflowspa.de" target="_blank" rel="noreferrer">www.miyuflowspa.de</a>
+        <a href="#">Mo–Sa: 10–20 Uhr</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-copy">© 2026 MIYU Flow Spa · Alle Rechte vorbehalten</span>
+    <div class="f-social">
+      <a href="https://instagram.com/miyu.spa" target="_blank" title="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" title="WhatsApp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+const mobMenu = document.getElementById('mob-menu');
+function openMob(){
+  mobMenu.classList.add('open');
+  mobMenu.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeMob(){
+  mobMenu.classList.remove('open');
+  mobMenu.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && mobMenu.classList.contains('open')) closeMob();
+});
+</script>
+</body>
+</html>
 
