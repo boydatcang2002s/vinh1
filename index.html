@@ -1627,15 +1627,17 @@ footer{background:var(--night);padding:72px 80px 44px;}
   <div class="contact-form-wrap reveal-right">
     <div style="background:var(--sand);border-radius:20px;padding:52px;border:1px solid var(--dust);">
       <p style="font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--night);margin-bottom:36px;">Termin anfragen</p>
-      <div class="c-form">
+      <form action="https://formsubmit.co/phamquocanhvec@gmail.com" method="POST" class="c-form">
+        <input type="hidden" name="_subject" value="Neue Termin Anfrage von MIYU Website">
+        <input type="hidden" name="_captcha" value="false">
         <div class="c-row">
-          <div class="c-group"><label class="c-lbl-form">Vorname</label><input class="c-input" placeholder="Anna"></div>
-          <div class="c-group"><label class="c-lbl-form">Nachname</label><input class="c-input" placeholder="Müller"></div>
+          <div class="c-group"><label class="c-lbl-form">Vorname</label><input name="first_name" class="c-input" placeholder="Anna" required></div>
+          <div class="c-group"><label class="c-lbl-form">Nachname</label><input name="last_name" class="c-input" placeholder="Müller" required></div>
         </div>
-        <div class="c-group"><label class="c-lbl-form">E-Mail oder Telefon</label><input class="c-input" placeholder="anna@email.de oder 0211 …"></div>
+        <div class="c-group"><label class="c-lbl-form">E-Mail oder Telefon</label><input name="contact" class="c-input" placeholder="anna@email.de oder 0211 …" required></div>
         <div class="c-group">
           <label class="c-lbl-form">Behandlung</label>
-          <select class="c-select">
+          <select name="treatment" class="c-select">
             <option value="">Bitte wählen …</option>
             <option>Deluxe Maniküre</option>
             <option>MIYU Maniküre</option>
@@ -1651,14 +1653,14 @@ footer{background:var(--night);padding:72px 80px 44px;}
           </select>
         </div>
         <div class="c-row">
-          <div class="c-group"><label class="c-lbl-form">Datum</label><input type="date" class="c-input"></div>
-          <div class="c-group"><label class="c-lbl-form">Uhrzeit</label><input type="time" class="c-input"></div>
+          <div class="c-group"><label class="c-lbl-form">Datum</label><input type="date" name="date" class="c-input"></div>
+          <div class="c-group"><label class="c-lbl-form">Uhrzeit</label><input type="time" name="time" class="c-input"></div>
         </div>
-        <div class="c-group"><label class="c-lbl-form">Nachricht</label><textarea class="c-textarea" placeholder="Besondere Wünsche, Allergien …"></textarea></div>
-        <button class="c-submit" onclick="submitForm(event)">
+        <div class="c-group"><label class="c-lbl-form">Nachricht</label><textarea name="message" class="c-textarea" placeholder="Besondere Wünsche, Allergien …"></textarea></div>
+        <button type="submit" class="c-submit">
           <span>Anfrage senden &nbsp;→</span>
         </button>
-      </div>
+      </form>
     </div>
   </div>
 </section>
@@ -1778,12 +1780,12 @@ document.addEventListener('keydown',e=>{
 });
 
 // Form
-function submitForm(e){
-  const btn=e.currentTarget;
-  btn.innerHTML='<span>✓ Erfolgreich gesendet!</span>';
-  btn.style.background='var(--bark)';
-  setTimeout(()=>{btn.innerHTML='<span>Anfrage senden &nbsp;→</span>';btn.style.background='';},3500);
-}
+// function submitForm(e){
+//   const btn=e.currentTarget;
+//   btn.innerHTML='<span>✓ Erfolgreich gesendet!</span>';
+//   btn.style.background='var(--bark)';
+//   setTimeout(()=>{btn.innerHTML='<span>Anfrage senden &nbsp;→</span>';btn.style.background='';},3500);
+// }
 </script>
 </body>
 </html>
