@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Datenschutz · MIYU Flow Spa</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,300;1,400&family=Tenor+Sans&family=EB+Garamond:ital,wght@0,300;0,400;1,300&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+<meta name="description" content="Datenschutzerklärung von MIYU Flow Spa Düsseldorf.">
+<meta name="theme-color" content="#f7f1e8">
 <style>
 :root{
   --bg:#f7f1e8;
@@ -13,102 +14,196 @@
   --accent:#b58c57;
   --gold:#c4a46b;
   --bark:#8b6b52;
-  --muted:#7a6b5d;
+  --muted:#706255;
   --panel:#fff8f1;
-  --line:rgba(181,140,87,.18);
+  --line:rgba(181,140,87,.20);
   --night:#1a120a;
   --bone:#ede0cc;
+  --nav-h:94px;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:"Avenir Next","Segoe UI",Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Tenor Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 24px);}
+body{
+  min-width:320px;
+  overflow-x:hidden;
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+body.menu-open{overflow:hidden;}
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
+button{font:inherit;}
 .page-shell{min-height:100vh;display:flex;flex-direction:column;}
+.skip-link{position:fixed;left:16px;top:-80px;z-index:9999;background:var(--night);color:#fff;padding:10px 14px;border-radius:8px;transition:top .2s;}
+.skip-link:focus{top:12px;}
 
 /* NAVIGATION */
-nav{position:fixed;top:0;width:100%;z-index:500;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease;background:rgba(247,241,232,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-nav.stuck{padding:18px 36px;}
-.nav-brand{text-decoration:none;display:flex;flex-direction:column;}
-.nav-brand .n1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:400;color:var(--text);letter-spacing:.18em;display:block;}
-.nav-brand .n2{font-family:'Tenor Sans',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:rgba(29,22,15,.7);display:block;margin-top:2px;}
-.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
-.nav-links a{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(29,22,15,.75);position:relative;padding-bottom:4px;transition:color .3s;}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .3s;}
-.nav-links a:hover{color:var(--accent);}
-.nav-links a:hover::after{width:100%;}
+#nav{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:500;
+  min-height:var(--nav-h);
+  padding:calc(18px + env(safe-area-inset-top,0px)) clamp(18px,4vw,52px) 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  background:rgba(247,241,232,.88);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid transparent;
+  transition:min-height .35s ease,padding .35s ease,background .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+#nav.stuck{
+  --nav-h:76px;
+  background:rgba(247,241,232,.97);
+  border-bottom-color:var(--line);
+  box-shadow:0 10px 35px rgba(29,22,15,.05);
+}
+.nav-brand{display:flex;flex-direction:column;min-width:0;}
+.nav-brand .n1{font-family:var(--display);font-size:clamp(1.35rem,2vw,1.65rem);font-weight:400;color:var(--text);letter-spacing:.18em;line-height:1;}
+.nav-brand .n2{font-size:.56rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:rgba(29,22,15,.62);margin-top:7px;white-space:nowrap;}
+.nav-links{display:flex;gap:clamp(18px,2.3vw,34px);list-style:none;align-items:center;}
+.nav-links a{font-size:.69rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(29,22,15,.72);position:relative;padding:8px 0;transition:color .3s;white-space:nowrap;}
+.nav-links a::after{content:"";position:absolute;bottom:3px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s;}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--accent);}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%;}
+
+.hamburger{display:none;width:44px;height:44px;border:0;background:transparent;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border-radius:50%;flex:0 0 auto;}
+.hamburger:hover,.hamburger:focus-visible{background:rgba(181,140,87,.10);outline:none;}
+.hamburger span{width:24px;height:1.5px;background:var(--text);transition:transform .3s,opacity .3s;}
+
+/* MOBILE MENU */
+#mob-menu{
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:600;
+  background:var(--night);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(20px,5vh,34px);
+  padding:calc(env(safe-area-inset-top,0px) + 100px) 24px calc(env(safe-area-inset-bottom,0px) + 48px);
+  overflow-y:auto;
+  transform:translateY(-12px);
+  transition:opacity .3s ease,visibility .3s ease,transform .3s ease;
+}
+#mob-menu.open{visibility:visible;opacity:1;pointer-events:auto;transform:none;}
+#mob-menu > a:not(.mob-brand){font-family:var(--display);font-size:clamp(1.65rem,7vw,2.35rem);font-weight:400;color:var(--bg);text-align:center;line-height:1.2;}
+#mob-menu > a:not(.mob-brand):hover,#mob-menu > a:not(.mob-brand):focus-visible{color:var(--accent);outline:none;}
+.mob-brand{position:absolute;top:calc(env(safe-area-inset-top,0px) + 28px);left:24px;font-family:var(--display);font-size:1.35rem;color:var(--bone);letter-spacing:.18em;}
+#mob-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);right:17px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:var(--bg);font-size:1.45rem;line-height:1;cursor:pointer;}
+#mob-close:hover,#mob-close:focus-visible{background:rgba(255,255,255,.08);outline:none;}
 
 /* HERO */
-.hero{position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:url('images/gallery-2.jpg') center/cover no-repeat;filter:brightness(.62) contrast(1.05);}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,7,.55) 0%,rgba(14,10,7,.18) 45%,rgba(247,241,232,.7) 100%);}
-.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:120px 28px 100px;color:var(--bg);display:grid;gap:18px;}
-.hero-eyebrow{font-size:.65rem;text-transform:uppercase;letter-spacing:.35em;color:rgba(240,230,211,.8);}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,5.8rem);line-height:.9;letter-spacing:.05em;}
-.hero-sub{max-width:640px;font-size:1rem;color:rgba(240,230,211,.8);margin-top:18px;}
+.hero{
+  position:relative;
+  min-height:clamp(500px,72vh,760px);
+  overflow:hidden;
+  display:grid;
+  align-items:end;
+  isolation:isolate;
+}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:#38281d url('images/gallery-2.jpg') center 42%/cover no-repeat;filter:brightness(.62) contrast(1.04);transform:scale(1.02);}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,10,7,.58) 0%,rgba(14,10,7,.20) 45%,rgba(247,241,232,.78) 100%);}
+.hero-content{width:min(100%,1160px);margin:0 auto;padding:calc(var(--nav-h) + clamp(72px,12vh,150px)) clamp(20px,4vw,42px) clamp(70px,10vw,120px);color:var(--bg);display:grid;gap:18px;}
+.hero-eyebrow{font-size:.64rem;text-transform:uppercase;letter-spacing:.34em;color:rgba(247,241,232,.80);}
+.hero-title{font-family:var(--display);font-size:clamp(2.55rem,7vw,6rem);font-weight:400;line-height:.92;letter-spacing:.025em;text-wrap:balance;}
+.hero-title em{font-weight:400;color:var(--bone);}
+.hero-sub{max-width:660px;font-size:clamp(.92rem,1.4vw,1.05rem);color:rgba(247,241,232,.82);margin-top:12px;line-height:1.75;}
 
 /* MAIN */
-.main{flex:1;max-width:1200px;margin:0 auto;padding:80px 28px;display:grid;grid-template-columns:1fr;gap:0;}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:0 20px 70px rgba(18,12,7,.04);padding:48px;}
-.section-title{font-family:'Playfair Display',serif;font-size:2.3rem;line-height:1.05;margin-bottom:18px;color:var(--text);}
-.section-note{font-size:.92rem;color:var(--muted);margin-bottom:28px;}
-.block{margin-bottom:42px;}
-.block h3{font-family:'Playfair Display',serif;font-size:1.38rem;margin-bottom:14px;color:var(--text);}
-.block h4{font-size:1rem;margin-bottom:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;}
-.block p{margin-bottom:18px;font-size:.95rem;color:var(--muted);}
-.block ul{margin-top:10px;padding-left:20px;color:var(--muted);}
+.main{flex:1;width:min(100%,1200px);margin:0 auto;padding:clamp(42px,7vw,88px) clamp(16px,4vw,32px) clamp(70px,9vw,118px);}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:clamp(18px,2.2vw,28px);box-shadow:0 24px 80px rgba(18,12,7,.055);padding:clamp(24px,5vw,58px);overflow:hidden;}
+.section-title{font-family:var(--display);font-size:clamp(2rem,4vw,2.75rem);line-height:1.08;margin-bottom:15px;color:var(--text);}
+.section-note{font-size:.94rem;color:var(--muted);margin-bottom:28px;max-width:760px;}
+.block{margin-bottom:clamp(34px,5vw,48px);scroll-margin-top:calc(var(--nav-h) + 30px);}
+.block:last-child{margin-bottom:0;}
+.block h3{font-family:var(--display);font-size:clamp(1.28rem,2.2vw,1.58rem);font-weight:400;line-height:1.25;margin:28px 0 13px;color:var(--text);text-wrap:balance;}
+.block > h3:first-child{margin-top:0;}
+.block h4{font-size:.78rem;margin:28px 0 12px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;line-height:1.55;}
+.block p{margin-bottom:16px;font-size:clamp(.9rem,1.2vw,.98rem);color:var(--muted);overflow-wrap:anywhere;hyphens:auto;}
+.block strong{color:var(--text);font-weight:600;}
+.block ul{margin:10px 0 18px;padding-left:22px;color:var(--muted);}
 .block li{margin-bottom:10px;}
-.separator{height:1px;background:var(--line);margin:44px 0;}
+.block a{text-decoration:underline;text-decoration-color:rgba(181,140,87,.45);text-underline-offset:3px;overflow-wrap:anywhere;word-break:break-word;transition:color .2s,text-decoration-color .2s;}
+.block a:hover,.block a:focus-visible{color:var(--accent);text-decoration-color:var(--accent);outline:none;}
+.separator{height:1px;background:var(--line);margin:clamp(38px,5vw,52px) 0;}
 
 /* FOOTER */
-footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
-.footer-top{max-width:1200px;margin:0 auto 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:80px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.05);}
-.f-brand{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bone);letter-spacing:.15em;margin-bottom:10px;}
-.f-brand-sub{font-size:.55rem;letter-spacing:.45em;text-transform:uppercase;color:var(--bark);margin-bottom:20px;display:block;}
-.f-tagline{font-size:.8rem;color:rgba(240,230,211,.3);line-height:1.8;max-width:260px;}
-.f-col-title{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
-.f-links{display:flex;flex-direction:column;gap:12px;}
-.f-links a{text-decoration:none;font-size:.82rem;color:rgba(240,230,211,.35);transition:color .3s;}
-.f-links a:hover{color:var(--gold);}
-.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.f-copy{font-size:.62rem;color:rgba(240,230,211,.2);letter-spacing:.1em;}
-.f-social{display:flex;gap:16px;}
-.f-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);transition:all .3s;text-decoration:none;}
-.f-social a:hover{border-color:var(--accent);color:var(--accent);background:rgba(181,140,87,.08);}
+footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px) calc(clamp(34px,5vw,48px) + env(safe-area-inset-bottom,0px));color:var(--bg);}
+.footer-top{width:min(100%,1200px);margin:0 auto 34px;display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(150px,1fr) minmax(220px,1fr);gap:clamp(38px,6vw,80px);padding-bottom:clamp(42px,6vw,58px);border-bottom:1px solid rgba(255,255,255,.06);}
+.f-brand{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--bone);letter-spacing:.15em;margin-bottom:8px;}
+.f-brand-sub{font-size:.55rem;letter-spacing:.38em;text-transform:uppercase;color:var(--bark);margin-bottom:18px;display:block;}
+.f-tagline{font-size:.8rem;color:rgba(240,230,211,.36);line-height:1.8;max-width:290px;}
+.f-col-title{font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.f-links{display:flex;flex-direction:column;gap:11px;}
+.f-links a{font-size:.82rem;color:rgba(240,230,211,.42);transition:color .3s;overflow-wrap:anywhere;}
+.f-links a:hover,.f-links a:focus-visible{color:var(--gold);outline:none;}
+.footer-bottom{width:min(100%,1200px);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
+.f-copy{font-size:.62rem;color:rgba(240,230,211,.25);letter-spacing:.09em;}
+.f-social{display:flex;gap:12px;}
+.f-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.42);transition:all .3s;}
+.f-social a:hover,.f-social a:focus-visible{border-color:var(--accent);color:var(--accent);background:rgba(181,140,87,.08);outline:none;}
 
-/* MOBILE NAVIGATION & HAMBURGER */
-.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:4px;flex-shrink:0;}
-.hamburger span{width:24px;height:2px;background:var(--text);transition:.3s;}
-#mob-menu{display:none;position:fixed;inset:0;z-index:600;background:rgba(26,18,10,.98);flex-direction:column;align-items:center;justify-content:flex-start;gap:32px;padding:calc(env(safe-area-inset-top,0px) + 110px) 24px calc(env(safe-area-inset-bottom,0px) + 32px);overflow-y:auto;}
-#mob-menu.open{display:flex;}
-#mob-menu a{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--bg);text-decoration:none;transition:color .3s;text-align:center;}
-#mob-menu a:hover{color:var(--accent);}
-.mob-brand{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);left:18px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:400;color:var(--bg);letter-spacing:.12em;text-decoration:none;}
-#mob-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);right:14px;background:none;border:none;color:var(--bg);font-size:1.6rem;line-height:1;cursor:pointer;padding:8px;z-index:2;}
-
-/* RESPONSIVE BREAKPOINTS */
-@media(max-width:1024px){
+/* RESPONSIVE */
+@media(max-width:960px){
   .nav-links{display:none;}
   .hamburger{display:flex;}
-  .hero{min-height:600px;}
-  .footer-top{grid-template-columns:1fr 1fr;gap:48px;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-top > div:first-child{grid-column:1/-1;}
 }
-@media(max-width:768px){
-  .hero-content{padding:100px 20px 80px;}
-  .main{padding:40px 20px;}
-  .card{padding:28px 20px;}
-  .footer-top{grid-template-columns:1fr;gap:40px;}
-  .footer-bottom{flex-direction:column;gap:20px;text-align:center;}
+@media(max-width:720px){
+  :root{--nav-h:78px;}
+  nav{padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;}
+  nav.stuck{--nav-h:70px;}
+  .hero{min-height:520px;}
+  .hero-content{padding-left:20px;padding-right:20px;padding-bottom:72px;}
+  .hero-title{line-height:.98;}
+  .main{padding-left:14px;padding-right:14px;}
+  .card{border-radius:18px;}
+  .footer-top{grid-template-columns:1fr;gap:36px;}
+  .footer-top > div:first-child{grid-column:auto;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:480px){
-  .hero-title{font-size:2.2rem;}
-  .nav-brand .n2{display:none;} /* Ẩn bớt phụ đề thương hiệu trên điện thoại nhỏ để tránh tràn Navbar */
+  .nav-brand .n2{font-size:.5rem;letter-spacing:.2em;max-width:210px;overflow:hidden;text-overflow:ellipsis;}
+  .hero{min-height:480px;}
+  .hero-eyebrow{letter-spacing:.22em;}
+  .hero-title{font-size:clamp(2.35rem,12vw,3.5rem);}
+  .hero-sub{font-size:.9rem;}
+  .card{padding:24px 18px;}
+  .block h4{font-size:.72rem;letter-spacing:.12em;}
+  .footer-bottom{align-items:center;text-align:center;}
+  .f-copy{line-height:1.7;}
+}
+@media(max-width:360px){
+  .nav-brand .n2{display:none;}
+  .hero-content{padding-left:16px;padding-right:16px;}
+  .main{padding-left:10px;padding-right:10px;}
+  .card{padding-left:15px;padding-right:15px;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
 }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 <div class="page-shell">
-<nav id="nav">
-  <a href="index.html" class="nav-brand">
+<nav id="nav" aria-label="Hauptnavigation">
+  <a href="index.html" class="nav-brand" aria-label="MIYU Flow Spa – Startseite">
     <span class="n1">MIYU</span>
     <span class="n2">Flow Spa · Düsseldorf</span>
   </a>
@@ -118,19 +213,19 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
     <li><a href="index.html#instagram">Galerie</a></li>
     <li><a href="index.html#contact">Kontakt</a></li>
   </ul>
-  <div class="hamburger" role="button" aria-label="Menü öffnen" tabindex="0" onclick="openMob()">
+  <button class="hamburger" id="menu-open" type="button" aria-label="Menü öffnen" aria-controls="mob-menu" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
-  </div>
+  </button>
 </nav>
-<div id="mob-menu" aria-hidden="true">
-  <a href="#" class="mob-brand" onclick="closeMob()">MIYU</a>
-  <button id="mob-close" type="button" aria-label="Menü schließen" onclick="closeMob()">✕</button>
-  <a href="index.html#about" onclick="closeMob()">Über uns</a>
-  <a href="index.html#services" onclick="closeMob()">Preisliste</a>
-  <a href="index.html#instagram" onclick="closeMob()">Galerie</a>
-  <a href="index.html#contact" onclick="closeMob()">Kontakt</a>
+<div id="mob-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <a href="index.html" class="mob-brand">MIYU</a>
+  <button id="mob-close" type="button" aria-label="Menü schließen">✕</button>
+  <a href="index.html#about">Über uns</a>
+  <a href="index.html#services">Preisliste</a>
+  <a href="index.html#instagram">Galerie</a>
+  <a href="index.html#contact">Kontakt</a>
 </div>
 <section class="hero">
   <div class="hero-content">
@@ -139,12 +234,13 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
     <p class="hero-sub">Lesen Sie, wie wir Ihre personenbezogenen Daten schützen und welche Rechte Ihnen nach der DSGVO zustehen.</p>
   </div>
 </section>
-<main class="main">
+<main class="main" id="main-content">
   <article class="card">
     <div class="section-title">Datenschutz</div>
     <p class="section-note">Im Folgenden finden Sie den vollständigen Überblick zur Verarbeitung Ihrer Daten auf unserer Website.</p>
 
-    <div class="block">
+
+    <div class="block" id="ueberblick">
       <h3>1. Datenschutz auf einen Blick</h3>
       <h4>Allgemeine Hinweise</h4>
       <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
@@ -170,7 +266,7 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
 
     <div class="separator"></div>
 
-    <div class="block">
+    <div class="block" id="hosting">
       <h3>2. Hosting</h3>
       <h4>GitHub Pages</h4>
       <p>Wir hosten unsere Website bei GitHub Pages. Anbieter ist die GitHub, Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend GitHub).</p>
@@ -180,7 +276,7 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
 
     <div class="separator"></div>
 
-    <div class="block">
+    <div class="block" id="pflichtinformationen">
       <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
       <h4>Datenschutz</h4>
       <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
@@ -193,7 +289,7 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
       <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
       <p><strong>Miyu FlowSpa<br>Dinh Huyen Trang</strong></p>
       <p>Telefon: +49 211 93891055<br>E-Mail: <a href="mailto:miyuflowspa@gmail.com">miyuflowspa@gmail.com</a></p>
-      <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten decides.</p>
+      <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
     </div>
 
     <div class="block">
@@ -205,14 +301,14 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
     <div class="block">
       <h4>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website</h4>
       <p>Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9 Abs. 2 lit. a DSGVO, sofern besondere Datenkategorien verarbeitet werden. Im Falle einer ausdrücklichen Einwilligung in die Übertragung personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1 lit. a DSGVO.</p>
-      <p>Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TTDSG. Die Einwilligung is jederzeit widerrufbar.</p>
+      <p>Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TTDSG. Die Einwilligung ist jederzeit widerrufbar.</p>
       <p>Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Ferner verarbeiten wir Daten zur Erfüllung einer rechtlichen Verpflichtung auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO.</p>
       <p>Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen.</p>
     </div>
 
     <div class="block">
       <h4>Hinweis zur Datenweitergabe in die USA und sonstige Drittstaaten</h4>
-      <p>Wir verwenden unter anderem Tools von Unternehmen mit Sitz in den USA oder sonstigen datenschutzrechtlich nicht sicheren Drittstaaten. Wenn diese Tools aktif sind, können Ihre personenbezogenen Daten in diese Drittstaaten übertragen und dort verarbeitet werden.</p>
+      <p>Wir verwenden unter anderem Tools von Unternehmen mit Sitz in den USA oder sonstigen datenschutzrechtlich nicht sicheren Drittstaaten. Wenn diese Tools aktiv sind, können Ihre personenbezogenen Daten in diese Drittstaaten übertragen und dort verarbeitet werden.</p>
       <p>Wir weisen darauf hin, dass in diesen Ländern kein mit der EU vergleichbares Datenschutzniveau garantiert werden kann. Beispielsweise sind US-Unternehmen dazu verpflichtet, personenbezogene Daten an Sicherheitsbehörden herauszugeben, ohne dass Sie als Betroffener hiergegen gerichtlich vorgehen könnten.</p>
       <p>Wir haben auf diese Verarbeitungstätigkeiten keinen Einfluss.</p>
     </div>
@@ -224,12 +320,12 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
 
     <div class="separator"></div>
 
-    <div class="block">
+    <div class="block" id="datenerfassung">
       <h3>4. Datenerfassung auf dieser Website</h3>
       <h4>Cookies</h4>
       <p>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert.</p>
       <p>Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt.</p>
-      <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmder Funktionen oder zur Optimierung der Website erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG.</p>
+      <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter Funktionen oder zur Optimierung der Website erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG.</p>
     </div>
 
     <div class="block">
@@ -247,11 +343,10 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
 
     <div class="separator"></div>
 
-    <div class="block">
+    <div class="block" id="plugins">
       <h3>5. Plugins und Tools</h3>
-      <h4>Google Web Fonts (lokales Hosting)</h4>
-      <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Web Fonts, die von Google bereitgestellt werden. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet dabei nicht statt.</p>
-      <p>Weitere Informationen zu Google Web Fonts finden Sie unter <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noreferrer">https://developers.google.com/fonts/faq</a> und in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
+      <h4>Schriftarten</h4>
+      <p>Diese Seite verwendet keine extern geladenen Google Web Fonts. Die Darstellung erfolgt mit lokal auf dem Endgerät verfügbaren Schriftarten. Eine Verbindung zu Servern von Google findet dabei nicht statt.</p>
 
       <h4>Google Maps</h4>
       <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.</p>
@@ -304,20 +399,45 @@ footer{background:var(--night);padding:72px 80px 44px;color:var(--bg);}
 </footer>
 </div>
 <script>
+const nav = document.getElementById('nav');
 const mobMenu = document.getElementById('mob-menu');
+const openButton = document.getElementById('menu-open');
+const closeButton = document.getElementById('mob-close');
+const mobileLinks = mobMenu.querySelectorAll('a');
+let lastFocusedElement = null;
+
+function updateNav(){
+  nav.classList.toggle('stuck', window.scrollY > 18);
+}
+
 function openMob(){
+  lastFocusedElement = document.activeElement;
   mobMenu.classList.add('open');
   mobMenu.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
+  openButton.setAttribute('aria-expanded','true');
+  document.body.classList.add('menu-open');
+  closeButton.focus();
 }
+
 function closeMob(){
   mobMenu.classList.remove('open');
   mobMenu.setAttribute('aria-hidden','true');
-  document.body.style.overflow = '';
+  openButton.setAttribute('aria-expanded','false');
+  document.body.classList.remove('menu-open');
+  if(lastFocusedElement) lastFocusedElement.focus();
 }
-document.addEventListener('keydown', e => {
-  if(e.key === 'Escape' && mobMenu.classList.contains('open')) closeMob();
+
+openButton.addEventListener('click', openMob);
+closeButton.addEventListener('click', closeMob);
+mobileLinks.forEach(link => link.addEventListener('click', closeMob));
+window.addEventListener('scroll', updateNav, {passive:true});
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 960 && mobMenu.classList.contains('open')) closeMob();
 });
+document.addEventListener('keydown', event => {
+  if(event.key === 'Escape' && mobMenu.classList.contains('open')) closeMob();
+});
+updateNav();
 </script>
 </body>
 </html>
