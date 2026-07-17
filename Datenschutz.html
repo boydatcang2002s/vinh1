@@ -2,10 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Datenschutz · MIYU Flow Spa</title>
 <meta name="description" content="Datenschutzerklärung von MIYU Flow Spa Düsseldorf.">
 <meta name="theme-color" content="#f7f1e8">
+<meta name="color-scheme" content="light">
 <style>
 :root{
   --bg:#f7f1e8;
@@ -26,13 +27,13 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 24px);}
 body{
-  min-width:320px;
   overflow-x:hidden;
   font-family:var(--sans);
   background:var(--bg);
   color:var(--text);
   line-height:1.8;
   text-rendering:optimizeLegibility;
+  -webkit-text-size-adjust:100%;
   -webkit-font-smoothing:antialiased;
 }
 body.menu-open{overflow:hidden;}
@@ -145,13 +146,14 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
 .footer-top{width:min(100%,1200px);margin:0 auto 34px;display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(150px,1fr) minmax(220px,1fr);gap:clamp(38px,6vw,80px);padding-bottom:clamp(42px,6vw,58px);border-bottom:1px solid rgba(255,255,255,.06);}
 .f-brand{font-family:var(--display);font-size:2rem;font-weight:400;color:var(--bone);letter-spacing:.15em;margin-bottom:8px;}
 .f-brand-sub{font-size:.55rem;letter-spacing:.38em;text-transform:uppercase;color:var(--bark);margin-bottom:18px;display:block;}
-.f-tagline{font-size:.8rem;color:rgba(240,230,211,.36);line-height:1.8;max-width:290px;}
+.f-tagline{font-size:.8rem;color:rgba(240,230,211,.48);line-height:1.8;max-width:290px;}
 .f-col-title{font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
 .f-links{display:flex;flex-direction:column;gap:11px;}
-.f-links a{font-size:.82rem;color:rgba(240,230,211,.42);transition:color .3s;overflow-wrap:anywhere;}
+.f-links a,.f-links span{font-size:.82rem;color:rgba(240,230,211,.54);overflow-wrap:anywhere;}
+.f-links a{transition:color .3s;}
 .f-links a:hover,.f-links a:focus-visible{color:var(--gold);outline:none;}
 .footer-bottom{width:min(100%,1200px);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;}
-.f-copy{font-size:.62rem;color:rgba(240,230,211,.25);letter-spacing:.09em;}
+.f-copy{font-size:.62rem;color:rgba(240,230,211,.40);letter-spacing:.09em;}
 .f-social{display:flex;gap:12px;}
 .f-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.42);transition:all .3s;}
 .f-social a:hover,.f-social a:focus-visible{border-color:var(--accent);color:var(--accent);background:rgba(181,140,87,.08);outline:none;}
@@ -165,8 +167,8 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
 }
 @media(max-width:720px){
   :root{--nav-h:78px;}
-  nav{padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;}
-  nav.stuck{--nav-h:70px;}
+  #nav{padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;}
+  #nav.stuck{--nav-h:70px;}
   .hero{min-height:520px;}
   .hero-content{padding-left:20px;padding-right:20px;padding-bottom:72px;}
   .hero-title{line-height:.98;}
@@ -193,6 +195,21 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
   .main{padding-left:10px;padding-right:10px;}
   .card{padding-left:15px;padding-right:15px;}
 }
+@media print{
+  :root{--bg:#fff;--panel:#fff;--text:#111;--muted:#333;}
+  html{scroll-padding-top:0;}
+  body{background:#fff;color:#111;line-height:1.55;}
+  .skip-link,#nav,#mob-menu,.hero,footer{display:none!important;}
+  .main{width:100%;padding:0;}
+  .card{border:0;border-radius:0;box-shadow:none;padding:0;overflow:visible;}
+  .section-title{font-size:24pt;}
+  .block{break-inside:auto;page-break-inside:auto;}
+  .block h3,.block h4{break-after:avoid-page;page-break-after:avoid;}
+  .block p{orphans:3;widows:3;}
+  .separator{margin:24px 0;}
+  .block a{color:#111;text-decoration:underline;}
+  .block a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;font-weight:400;}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}
@@ -214,12 +231,12 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
     <li><a href="index.html#contact">Kontakt</a></li>
   </ul>
   <button class="hamburger" id="menu-open" type="button" aria-label="Menü öffnen" aria-controls="mob-menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
   </button>
 </nav>
-<div id="mob-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+<div id="mob-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation" inert>
   <a href="index.html" class="mob-brand">MIYU</a>
   <button id="mob-close" type="button" aria-label="Menü schließen">✕</button>
   <a href="index.html#about">Über uns</a>
@@ -236,9 +253,8 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
 </section>
 <main class="main" id="main-content">
   <article class="card">
-    <div class="section-title">Datenschutz</div>
+    <h2 class="section-title">Datenschutz</h2>
     <p class="section-note">Im Folgenden finden Sie den vollständigen Überblick zur Verarbeitung Ihrer Daten auf unserer Website.</p>
-
 
     <div class="block" id="ueberblick">
       <h3>1. Datenschutz auf einen Blick</h3>
@@ -270,7 +286,7 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
       <h3>2. Hosting</h3>
       <h4>GitHub Pages</h4>
       <p>Wir hosten unsere Website bei GitHub Pages. Anbieter ist die GitHub, Inc., 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, USA (nachfolgend GitHub).</p>
-      <p>Wenn Sie unsere Website besuchen, werden Ihre Verbindungsdaten auf den Servern von GitHub verarbeitet. Details entnehmen Sie der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+      <p>Wenn Sie unsere Website besuchen, werden Ihre Verbindungsdaten auf den Servern von GitHub verarbeitet. Details entnehmen Sie der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
       <p>Die Verwendung von GitHub Pages erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer technisch zuverlässigen und schnellen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
     </div>
 
@@ -287,8 +303,8 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
     <div class="block">
       <h4>Hinweis zur verantwortlichen Stelle</h4>
       <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-      <p><strong>Miyu FlowSpa<br>Dinh Huyen Trang</strong></p>
-      <p>Telefon: +49 211 93891055<br>E-Mail: <a href="mailto:miyuflowspa@gmail.com">miyuflowspa@gmail.com</a></p>
+      <p><strong>MIYU Flow Spa<br>Dinh Huyen Trang</strong></p>
+      <p>Telefon: <a href="tel:+4921193891055">+49 211 93891055</a><br>E-Mail: <a href="mailto:miyuflowspa@gmail.com">miyuflowspa@gmail.com</a></p>
       <p>Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.</p>
     </div>
 
@@ -301,7 +317,7 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
     <div class="block">
       <h4>Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website</h4>
       <p>Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9 Abs. 2 lit. a DSGVO, sofern besondere Datenkategorien verarbeitet werden. Im Falle einer ausdrücklichen Einwilligung in die Übertragung personenbezogener Daten in Drittstaaten erfolgt die Datenverarbeitung außerdem auf Grundlage von Art. 49 Abs. 1 lit. a DSGVO.</p>
-      <p>Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TTDSG. Die Einwilligung ist jederzeit widerrufbar.</p>
+      <p>Sofern Sie in die Speicherung von Cookies oder in den Zugriff auf Informationen in Ihr Endgerät eingewilligt haben, erfolgt die Datenverarbeitung zusätzlich auf Grundlage von § 25 Abs. 1 TDDDG. Die Einwilligung ist jederzeit widerrufbar.</p>
       <p>Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, verarbeiten wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Ferner verarbeiten wir Daten zur Erfüllung einer rechtlichen Verpflichtung auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO.</p>
       <p>Die Datenverarbeitung kann ferner auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO erfolgen.</p>
     </div>
@@ -325,7 +341,7 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
       <h4>Cookies</h4>
       <p>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an. Sie werden entweder vorübergehend für die Dauer einer Sitzung (Session-Cookies) oder dauerhaft (permanente Cookies) auf Ihrem Endgerät gespeichert.</p>
       <p>Session-Cookies werden nach Ende Ihres Besuchs automatisch gelöscht. Permanente Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen oder eine automatische Löschung durch Ihren Webbrowser erfolgt.</p>
-      <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter Funktionen oder zur Optimierung der Website erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG.</p>
+      <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs, zur Bereitstellung bestimmter Funktionen oder zur Optimierung der Website erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG.</p>
     </div>
 
     <div class="block">
@@ -352,8 +368,8 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
       <p>Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4, Irland.</p>
       <p>Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Der Anbieter dieser Seite hat keinen Einfluss auf diese Datenübertragung. Wenn Google Maps aktiviert ist, kann Google zum Zwecke der einheitlichen Darstellung der Schriftarten Google Web Fonts verwenden. Beim Aufruf von Google Maps lädt Ihr Browser die benötigten Web Fonts in ihren Browsercache, um Texte und Schriftarten korrekt anzuzeigen.</p>
       <p>Die Nutzung von Google Maps erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote und an einer leichten Auffindbarkeit der von uns auf der Website angegebenen Orte. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG (ehemals TTDSG), soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.</p>
-      <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/</a> und <a href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/" target="_blank" rel="noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/sccs/</a>.</p>
-      <p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
+      <p>Die Datenübertragung in die USA wird auf die Standardvertragsklauseln der EU-Kommission gestützt. Details finden Sie hier: <a href="https://privacy.google.com/businesses/gdprcontrollerterms/" target="_blank" rel="noopener noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/</a> und <a href="https://privacy.google.com/businesses/gdprcontrollerterms/sccs/" target="_blank" rel="noopener noreferrer">https://privacy.google.com/businesses/gdprcontrollerterms/sccs/</a>.</p>
+      <p>Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=de</a>.</p>
     </div>
   </article>
 </main>
@@ -377,22 +393,19 @@ footer{background:var(--night);padding:clamp(58px,8vw,80px) clamp(20px,6vw,80px)
     <div>
       <div class="f-col-title">Kontakt</div>
       <div class="f-links">
-        <a href="#">Friedrichstraße 133, Düsseldorf</a>
-        <a href="#">Düsseldorf Arcaden · 1. Untergeschoss</a>
-        <a href="tel:+49 211 93891055">+49 211 93891055</a>
-        <a href="https://www.miyuflowspa.de" target="_blank" rel="noreferrer">www.miyuflowspa.de</a>
-        <a href="#">Mo–Sa: 10–20 Uhr</a>
+        <span>Friedrichstraße 133, Düsseldorf</span>
+        <span>Düsseldorf Arcaden · 1. Untergeschoss</span>
+        <a href="tel:+4921193891055">+49 211 93891055</a>
+        <a href="https://www.miyuflowspa.de" target="_blank" rel="noopener noreferrer">www.miyuflowspa.de</a>
+        <span>Mo–Sa: 10–20 Uhr</span>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <span class="f-copy">© 2026 MIYU Flow Spa · Alle Rechte vorbehalten</span>
     <div class="f-social">
-      <a href="https://instagram.com/miyu.spa" target="_blank" title="Instagram">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" title="WhatsApp">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      <a href="https://instagram.com/miyu.spa" target="_blank" rel="noopener noreferrer" aria-label="MIYU Flow Spa auf Instagram öffnen" title="Instagram">
+        <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       </a>
     </div>
   </div>
@@ -404,6 +417,7 @@ const mobMenu = document.getElementById('mob-menu');
 const openButton = document.getElementById('menu-open');
 const closeButton = document.getElementById('mob-close');
 const mobileLinks = mobMenu.querySelectorAll('a');
+const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 let lastFocusedElement = null;
 
 function updateNav(){
@@ -412,6 +426,7 @@ function updateNav(){
 
 function openMob(){
   lastFocusedElement = document.activeElement;
+  mobMenu.inert = false;
   mobMenu.classList.add('open');
   mobMenu.setAttribute('aria-hidden','false');
   openButton.setAttribute('aria-expanded','true');
@@ -419,23 +434,47 @@ function openMob(){
   closeButton.focus();
 }
 
-function closeMob(){
+function closeMob(restoreFocus = true){
   mobMenu.classList.remove('open');
   mobMenu.setAttribute('aria-hidden','true');
+  mobMenu.inert = true;
   openButton.setAttribute('aria-expanded','false');
   document.body.classList.remove('menu-open');
-  if(lastFocusedElement) lastFocusedElement.focus();
+  if(restoreFocus && lastFocusedElement instanceof HTMLElement){
+    lastFocusedElement.focus();
+  }
+}
+
+function trapMenuFocus(event){
+  if(event.key !== 'Tab' || !mobMenu.classList.contains('open')) return;
+  const focusable = [...mobMenu.querySelectorAll(focusableSelector)].filter(element => !element.hasAttribute('disabled'));
+  if(!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if(event.shiftKey && document.activeElement === first){
+    event.preventDefault();
+    last.focus();
+  }else if(!event.shiftKey && document.activeElement === last){
+    event.preventDefault();
+    first.focus();
+  }
 }
 
 openButton.addEventListener('click', openMob);
-closeButton.addEventListener('click', closeMob);
-mobileLinks.forEach(link => link.addEventListener('click', closeMob));
+closeButton.addEventListener('click', () => closeMob());
+mobileLinks.forEach(link => link.addEventListener('click', () => closeMob(false)));
 window.addEventListener('scroll', updateNav, {passive:true});
 window.addEventListener('resize', () => {
-  if(window.innerWidth > 960 && mobMenu.classList.contains('open')) closeMob();
+  if(window.innerWidth > 960 && mobMenu.classList.contains('open')) closeMob(false);
 });
 document.addEventListener('keydown', event => {
-  if(event.key === 'Escape' && mobMenu.classList.contains('open')) closeMob();
+  if(event.key === 'Escape' && mobMenu.classList.contains('open')){
+    event.preventDefault();
+    closeMob();
+    return;
+  }
+  trapMenuFocus(event);
 });
 updateNav();
 </script>
