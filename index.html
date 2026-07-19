@@ -1634,8 +1634,34 @@ footer{background:var(--night);padding:72px 80px 44px;}
           <div class="c-group"><label class="c-lbl-form">Vorname</label><input name="first_name" class="c-input" placeholder="Anna" required></div>
           <div class="c-group"><label class="c-lbl-form">Nachname</label><input name="last_name" class="c-input" placeholder="Müller" required></div>
         </div>
-        <div class="c-group"><label class="c-lbl-form">E-Mail oder Telefon</label><input name="contact" class="c-input" placeholder="anna@email.de oder 0211 …" required></div>
-        <div class="c-group">
+<div class="c-row">
+
+  <div class="c-group">
+    <label class="c-lbl-form">Telefon *</label>
+    <input
+      type="tel"
+      name="phone"
+      class="c-input"
+      placeholder="+49"
+      autocomplete="tel"
+      required
+      pattern="^\+?[0-9\s()-]{7,20}$"
+      title="Bitte geben Sie eine gültige Telefonnummer ein."
+    >
+  </div>
+
+  <div class="c-group">
+    <label class="c-lbl-form">E-Mail</label>
+    <input
+      type="email"
+      name="email"
+      class="c-input"
+      placeholder="anna@email.de"
+      autocomplete="email"
+    >
+  </div>
+
+</div>        <div class="c-group">
           <label class="c-lbl-form">Behandlung</label>
           <select name="treatment" class="c-select">
             <option value="">Bitte wählen …</option>
