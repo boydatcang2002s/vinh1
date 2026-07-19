@@ -424,6 +424,26 @@ nav.stuck .hamburger span{background:var(--night);}
     color:var(--bone);
     font-weight:700;
     letter-spacing:.02em;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    row-gap:8px;
+}
+
+.promo-badge{
+    display:inline-block;
+    margin-left:12px;
+    padding:4px 10px;
+    font-size:.72rem;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:none;
+    color:#2b1c10;
+    background:#d4b06a;
+    border-radius:999px;
+    vertical-align:middle;
+    white-space:nowrap;
 }
 
 .price-card-note{
@@ -704,6 +724,21 @@ nav.stuck .hamburger span{background:var(--night);}
   border-color:var(--gold);background:var(--cream);
   box-shadow:0 0 0 4px rgba(196,164,107,.08);
 }
+.c-input.is-invalid{
+  border-color:#c0392b;
+  background:rgba(192,57,43,.04);
+}
+.c-input.is-invalid:focus{
+  box-shadow:0 0 0 4px rgba(192,57,43,.08);
+}
+.c-input.is-valid{
+  border-color:#6b8f5e;
+}
+.c-error{
+  font-size:.68rem;color:#c0392b;line-height:1.4;
+  display:none;
+}
+.c-error.show{display:block;}
 .c-textarea{resize:vertical;min-height:100px;}
 .c-submit{
   display:inline-flex;align-items:center;gap:14px;
@@ -1392,7 +1427,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
 <div id="tab-headspa" class="price-panel">
     <div class="price-card">
       <div class="price-card-head">
-        <div class="price-card-title">Headspa</div>
+        <div class="price-card-title">Headspa <span class="promo-badge">-20% auf deine Auszeit</span></div>
         <p class="price-card-note">Gönnen Sie sich einen Moment der Ruhe, Regeneration und bewussten Selfcare.</p>
       </div>
 
@@ -1502,7 +1537,7 @@ footer{background:var(--night);padding:72px 80px 44px;}
 <div id="tab-skin" class="price-panel">
     <div class="price-card">
       <div class="price-card-head">
-        <div class="price-card-title">Skincare</div>
+        <div class="price-card-title">Skincare <span class="promo-badge">-20% auf deine Auszeit</span></div>
         <p class="price-card-note">Individuelle Pflege für gesunde, strahlende Haut.</p>
       </div>
       <div class="service-stack">
@@ -1640,25 +1675,31 @@ footer{background:var(--night);padding:72px 80px 44px;}
     <label class="c-lbl-form">Telefon *</label>
     <input
       type="tel"
+      id="field-phone"
       name="phone"
       class="c-input"
-      placeholder="+49"
+      placeholder="+49 211 93891055"
       autocomplete="tel"
       required
-      pattern="^\+?[0-9\s()-]{7,20}$"
+      pattern="^\+?[0-9][0-9\s()-]{6,19}$"
       title="Bitte geben Sie eine gültige Telefonnummer ein."
     >
+    <span class="c-error" id="error-phone">Bitte geben Sie eine gültige Telefonnummer ein.</span>
   </div>
 
   <div class="c-group">
     <label class="c-lbl-form">E-Mail</label>
     <input
       type="email"
+      id="field-email"
       name="email"
       class="c-input"
       placeholder="anna@email.de"
       autocomplete="email"
+      pattern="^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$"
+      title="Bitte geben Sie eine gültige E-Mail-Adresse ein."
     >
+    <span class="c-error" id="error-email">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
   </div>
 
 </div>        <div class="c-group">
@@ -1812,6 +1853,115 @@ document.addEventListener('keydown',e=>{
 //   btn.style.background='var(--bark)';
 //   setTimeout(()=>{btn.innerHTML='<span>Anfrage senden &nbsp;→</span>';btn.style.background='';},3500);
 // }
+
+// Live validation: Telefon (bắt buộc) & E-Mail (không bắt buộc, nhưng nếu nhập phải đúng định dạng)
+(function(){
+  // Chặn gõ trực tiếp: chỉ cho số, khoảng trắng, ( ) - và tối đa MỘT dấu + ở đầu
+  function sanitizePhoneValue(value){
+    // 1. Bỏ mọi ký tự không phải số, +, khoảng trắng, ( ) -
+    let v = value.replace(/[^0-9+\s()-]/g, '');
+    // 2. Chỉ giữ lại dấu + đầu tiên (nếu có), bỏ hết các dấu + khác ở bất kỳ đâu
+    const hadLeadingPlus = v.charAt(0) === '+';
+    v = v.replace(/\+/g, '');
+    if(hadLeadingPlus) v = '+' + v;
+    return v;
+  }
+
+  function attachPhoneSanitizer(input){
+    input.addEventListener('beforeinput', function(e){
+      // Chặn ngay từ lúc gõ nếu ký tự vừa nhập không hợp lệ (chữ cái, ký tự đặc biệt...)
+      if(e.data && /[^0-9+\s()-]/.test(e.data)){
+        e.preventDefault();
+      }
+    });
+    input.addEventListener('input', function(){
+      const start = input.selectionStart;
+      const before = input.value;
+      const cleaned = sanitizePhoneValue(before);
+      if(cleaned !== before){
+        const diff = before.length - cleaned.length;
+        input.value = cleaned;
+        // Cố gắng giữ vị trí con trỏ hợp lý sau khi lọc ký tự
+        const pos = Math.max(0, (start || cleaned.length) - diff);
+        input.setSelectionRange(pos, pos);
+      }
+    });
+  }
+
+  function setupLiveValidation(inputId, errorId, opts){
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    if(!input || !error) return;
+    const isRequired = !!opts.required;
+
+    function validate(){
+      const val = input.value.trim();
+      const empty = val.length === 0;
+
+      if(empty){
+        input.classList.remove('is-invalid','is-valid');
+        error.classList.remove('show');
+        // Bắt buộc nhưng để trống -> chỉ báo lỗi khi user đã rời khỏi ô (blur) hoặc submit
+        return empty && isRequired;
+      }
+
+      const valid = input.checkValidity();
+      if(valid){
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+        error.classList.remove('show');
+      } else {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+        error.classList.add('show');
+      }
+      return valid;
+    }
+
+    if(opts.sanitizePhone){
+      attachPhoneSanitizer(input);
+    }
+
+    input.addEventListener('input', validate);
+    input.addEventListener('blur', function(){
+      const val = input.value.trim();
+      if(val.length === 0 && isRequired){
+        input.classList.add('is-invalid');
+        error.classList.add('show');
+      } else {
+        validate();
+      }
+    });
+  }
+
+  setupLiveValidation('field-phone', 'error-phone', { required: true, sanitizePhone: true });
+  setupLiveValidation('field-email', 'error-email', { required: false });
+
+  // Chặn submit nếu có lỗi định dạng (email để trống thì bỏ qua, nhưng nếu có nhập phải hợp lệ)
+  const bookingForm = document.querySelector('.c-form');
+  if(bookingForm){
+    bookingForm.addEventListener('submit', function(e){
+      const phone = document.getElementById('field-phone');
+      const email = document.getElementById('field-email');
+      let hasError = false;
+
+      if(phone && !phone.checkValidity()){
+        phone.classList.add('is-invalid');
+        document.getElementById('error-phone').classList.add('show');
+        hasError = true;
+      }
+      if(email && email.value.trim().length > 0 && !email.checkValidity()){
+        email.classList.add('is-invalid');
+        document.getElementById('error-email').classList.add('show');
+        hasError = true;
+      }
+
+      if(hasError){
+        e.preventDefault();
+      }
+    });
+  }
+})();
 </script>
 </body>
 </html>
